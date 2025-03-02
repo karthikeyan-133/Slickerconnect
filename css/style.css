@@ -165,7 +165,7 @@ a:focus {
 }
 
 .logo-img {
-  max-height: 50px;
+  max-height: 150px;
   width: auto;
   transition: all 0.3s ease;
 }
