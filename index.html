@@ -275,21 +275,25 @@
   <section class="counter_section py-5" style="background-color: #f8f9fa;">
     <div class="container">
       <div class="row text-center">
-        <div class="col-md-6 mb-4 mb-md-0">
+        <div class="col-md-4 mb-4 mb-md-0">
           <div class="counter-box p-4" style="background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
             <i class="fa fa-shopping-cart mb-3" style="font-size: 40px; color: #52AAB4;"></i>
-            <h2 class="counter-number" data-count="1425" style="font-size: 2.5rem; color: #222831; font-weight: 700;">108</h2>
+            <h2 class="counter-number" data-count="108" style="font-size: 2.5rem; color: #222831; font-weight: 700;">108</h2>
             <h4 style="color: #666; font-size: 1.2rem;">Orders Delivered</h4>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4 mb-4 mb-md-0">
           <div class="counter-box p-4" style="background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
             <i class="fa fa-users mb-3" style="font-size: 40px; color: #52AAB4;"></i>
-            <h2 class="counter-number" data-count="325"
-            <h2 class="counter-number mb-2" style="font-size: 2.5rem; color: #222831; font-weight: 700;">
-              
-            </h2>
+            <h2 class="counter-number" data-count="54" style="font-size: 2.5rem; color: #222831; font-weight: 700;">54</h2>
             <h4 style="color: #666; font-size: 1.2rem;">Happy Customers</h4>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="counter-box p-4" style="background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <i class="fa fa-rupee mb-3" style="font-size: 40px; color: #52AAB4;"></i>
+            <h2 class="counter-number" data-count="431813" style="font-size: 2.5rem; color: #222831; font-weight: 700;"></h2>
+            <h4 style="color: #666; font-size: 1.2rem;">Total Sales</h4>
           </div>
         </div>
       </div>
@@ -936,15 +940,16 @@ Join us at Slicker Connect and let us bring your essentials to you, right when y
   function animateCounter(element, start, end, duration) {
     let current = start;
     const range = end - start;
-    const increment = end > start ? 1 : -1;
-    const stepTime = Math.abs(Math.floor(duration / range));
+    const increment = 10000;
+    const stepTime = 50;
     
     const timer = setInterval(function() {
       current += increment;
-      element.textContent = current + '+';
-      if (current == end) {
+      if (current >= end) {
+        current = end;
         clearInterval(timer);
       }
+      element.textContent = current.toLocaleString() + '+';
     }, stepTime);
   }
 
@@ -954,7 +959,7 @@ Join us at Slicker Connect and let us bring your essentials to you, right when y
       if (entry.isIntersecting) {
         const target = entry.target;
         const finalValue = parseInt(target.getAttribute('data-count'));
-        animateCounter(target, 0, finalValue, 2000);
+        animateCounter(target, 0, finalValue, 300);
         observer.unobserve(target);
       }
     });
